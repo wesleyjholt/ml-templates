@@ -1,0 +1,14 @@
+state:
+  seed: 0
+  in_size: 2
+  out_size: 1
+  hidden_size: 16
+  learning_rate: 3.0e-3
+  dataset_size: 5000
+  batch_size: 32
+train:
+  num_epochs: 3
+  loss_history_path: loss_history.txt
+  checkpoint_directory: checkpoints
+  final_model_path: trained_model.eqx
+  save_every: 20
