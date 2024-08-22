@@ -1,2 +1,2 @@
 # ml-templates
-Templates for running common machine learning tasks.
+Templates for performing common machine learning tasks.
