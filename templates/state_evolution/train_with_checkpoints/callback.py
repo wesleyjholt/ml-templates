@@ -6,6 +6,7 @@ import orbax.checkpoint as ocp
 
 from state import TrainState
 from checkpointing import EquinoxSave
+from utils import compute_elapsed_time
 
 def save_checkpoint(state: TrainState, hyperparams: dict, mngr: ocp.CheckpointManager):
     state = eqx.tree_at(lambda x: x.dataloader.state_dict, state, state.dataloader.iterable.state_dict())
@@ -15,9 +16,13 @@ def save_checkpoint(state: TrainState, hyperparams: dict, mngr: ocp.CheckpointMa
 
 def print_loss(state: TrainState, hyperparams: dict):
     num_epochs = hyperparams['train']['num_epochs']
+    total_time = compute_elapsed_time(state.timestamps.first_start_time)
+    time_since_last_restart = compute_elapsed_time(state.timestamps.last_restart_time)
     print(f'Epoch {state.dataloader.i_epoch}/{num_epochs}', end='\t')
     print(f'Batch {state.dataloader.i_batch}/{len(state.dataloader.iterable)}', end='\t')
-    print(f'Loss: {state.loss.recent_accumulated_loss / state.loss.num_recent :.4f}')
+    print(f'Loss: {state.loss.recent_accumulated_loss / state.loss.num_recent :.5f}', end='\t')
+    print(f'Total run time: {total_time}', end='\t')
+    print(f'Time since last restart: {time_since_last_restart}')
 
 def write_loss(state: TrainState, hyperparams: dict):
     path = hyperparams['train']['loss_history_path']

@@ -9,4 +9,4 @@ class AdamOptimizer(eqx.Module):
     optim: Any
     def __init__(self, model, lr, **kwargs):
         self.optim = optax.adam(lr)
-        self.state = self.optim.init(model)
+        self.state = self.optim.init(eqx.filter(model, eqx.is_inexact_array))

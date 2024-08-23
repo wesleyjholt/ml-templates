@@ -7,6 +7,7 @@ import jax.random as jr
 import equinox as eqx
 
 class RNN(eqx.Module):
+    # This is a simple Recurrent Neural Network (RNN) model.
     # From equinox docs: https://docs.kidger.site/equinox/examples/train_rnn/
     cell: eqx.Module
     linear: eqx.nn.Linear

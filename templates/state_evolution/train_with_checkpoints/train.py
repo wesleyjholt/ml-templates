@@ -1,8 +1,11 @@
 # This is where the training happens.
 
+# TODO: Add time tracking (save to file, automatically add new computing time).
+
 import os
 import orbax.checkpoint as ocp
 import equinox as eqx
+from time import time
 
 from state import TrainState
 from update import IterData, train_step, increment_epoch, reset_accumulated_loss, reset_batch_counter
@@ -32,6 +35,7 @@ def init_state(hyperparams: dict, checkpoint_manager: ocp.CheckpointManager):
         # Load a previous state
         skeleton = TrainState(**hyperparams['state'], make_skeleton=False)
         state = checkpoint_manager.restore(last_step, args=EquinoxRestore(skeleton=skeleton))
+        state = eqx.tree_at(lambda x: x.timestamps.last_restart_time, state, time())
     state.dataloader.iterable.load_state_dict(state.dataloader.state_dict)
     return state
 
@@ -41,8 +45,8 @@ def save_final_model(state: TrainState, hyperparams: dict):
 
 def load_final_model(hyperparams: dict):
     """Loads the final state."""
-    from model import RNN
-    skeleton = eqx.filter_eval_shape(RNN, **hyperparams['state'])
+    from model import RNN as Model
+    skeleton = eqx.filter_eval_shape(Model, **hyperparams['state'])
     return eqx.tree_deserialise_leaves(hyperparams['train']['final_model_path'], skeleton)
 
 # REPLACE WITH YOUR OWN TRAINING FUNCTION!
