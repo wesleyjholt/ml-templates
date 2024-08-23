@@ -70,7 +70,7 @@ def train(hyperparams: dict, reset: bool):
                     print_loss(state, hyperparams)
                     write_loss(state, hyperparams)
                     state = reset_accumulated_loss(state)
-                    save_checkpoint(state, mngr, hyperparams)
+                    save_checkpoint(state, hyperparams, mngr)
 
             state = reset_batch_counter(state)
 

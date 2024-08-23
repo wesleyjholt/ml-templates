@@ -1,0 +1,6 @@
+# REPLACE ME WITH YOUR HYPERPARAMETERS!
+state:
+  a: 0
+  b: 10.0
+train:
+  alternate_sign: true

@@ -4,7 +4,7 @@ import orbax.checkpoint as ocp
 from state import TrainState
 from checkpointing import EquinoxSave
 
-def save_checkpoint(state: TrainState, mngr: ocp.CheckpointManager, hyperparams: dict):
+def save_checkpoint(state: TrainState, hyperparams: dict, mngr: ocp.CheckpointManager):
     state = eqx.tree_at(lambda x: x.dataloader.state_dict, state, state.dataloader.iterable.state_dict())
     cumulative_iter = (state.dataloader.i_epoch - 1) * len(state.dataloader.iterable) + state.dataloader.i_batch
     mngr.save(cumulative_iter, args=EquinoxSave(state=state, hyperparams=hyperparams))
