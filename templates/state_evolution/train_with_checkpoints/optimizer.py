@@ -1,3 +1,5 @@
+# REPLACE THIS CODE WITH YOR OWN OPTIMIZATION ALGORITHM!
+
 import equinox as eqx
 import optax
 from typing import Any

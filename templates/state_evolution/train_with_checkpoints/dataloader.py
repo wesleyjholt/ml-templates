@@ -1,3 +1,5 @@
+# REPLACE THIS CODE WITH YOUR OWN DATA LOADER!
+
 import jax.numpy as jnp
 import jax.random as jr
 import equinox as eqx
@@ -5,7 +7,6 @@ import numpy as np
 from torch.utils.data import Dataset
 from torchdata.stateful_dataloader import StatefulDataLoader
 from typing import Iterable
-
 
 class TorchDataLoader(eqx.Module):
     i_batch: int

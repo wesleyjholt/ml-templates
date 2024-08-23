@@ -1,3 +1,5 @@
+# REPLACE THIS CODE WITH YOUR OWN MODEL!
+
 import jax
 from jax import lax
 import jax.numpy as jnp

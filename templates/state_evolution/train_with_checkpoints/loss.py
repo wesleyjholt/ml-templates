@@ -1,3 +1,5 @@
+# REPLACE THIS CODE WITH YOUR OWN LOSS FUNCTION!
+
 from jax import vmap
 import jax.numpy as jnp
 import equinox as eqx

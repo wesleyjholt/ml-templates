@@ -1,3 +1,4 @@
+# REPLACE WITH YOUR OWN HYPERPARAMETERS!
 state:
   seed: 0
   in_size: 2

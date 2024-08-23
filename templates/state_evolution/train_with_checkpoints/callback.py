@@ -1,3 +1,6 @@
+# REPLACE THESE WITH YOUR OWN CALLBACK FUNCTIONS!
+# (These are functions which do not modify the state.)
+
 import equinox as eqx
 import orbax.checkpoint as ocp
 

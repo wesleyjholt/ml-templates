@@ -1,3 +1,5 @@
+# This is where the training happens.
+
 import os
 import orbax.checkpoint as ocp
 import equinox as eqx
@@ -7,6 +9,7 @@ from update import IterData, train_step, increment_epoch, reset_accumulated_loss
 from callback import save_checkpoint, print_loss, write_loss
 from checkpointing import EquinoxSave, EquinoxRestore
 
+# REPLACE WITH YOUR OWN DIRECTORY SETUP FUNCTION!
 def setup_io(hyperparams: dict):
     """Creates directories and files necessary for logging and checkpointing."""
     loss_history_path = hyperparams['train']['loss_history_path']
@@ -16,6 +19,7 @@ def setup_io(hyperparams: dict):
     with open(loss_history_path, 'w') as f:
         f.write('epoch,batch,loss\n')
 
+# REPLACE WITH YOUR OWN STATE INITIALIZATION FUNCTION!
 def init_state(hyperparams: dict, checkpoint_manager: ocp.CheckpointManager):
     """Either creates a new state or restores a previous state."""
     last_step = checkpoint_manager.latest_step()
@@ -41,6 +45,7 @@ def load_final_model(hyperparams: dict):
     skeleton = eqx.filter_eval_shape(RNN, **hyperparams['state'])
     return eqx.tree_deserialise_leaves(hyperparams['train']['final_model_path'], skeleton)
 
+# REPLACE WITH YOUR OWN TRAINING FUNCTION!
 def train(hyperparams: dict, reset: bool):
     """Runs the training loop, checkpointing along the way."""
 

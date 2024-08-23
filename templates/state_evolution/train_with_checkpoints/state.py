@@ -1,3 +1,5 @@
+# REPLACE THIS CODE WITH YOUR OWN TRAINING STATE!
+
 import jax.random as jr
 import equinox as eqx
 

@@ -1,3 +1,5 @@
+# REPLACE WITH YOUR OWN STATE UPDATE FUNCTIONS!
+
 import jax
 import jax.numpy as jnp
 import equinox as eqx
