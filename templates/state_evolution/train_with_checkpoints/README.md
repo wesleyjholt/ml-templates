@@ -8,7 +8,15 @@ To start a new training session:
 ```bash
 python train.py --reset
 ```
-If training gets interrupted, you can resume from the last checkpoint simply by running the script again (without the `--reset` flag).:
+If training gets interrupted, you can resume from the last checkpoint simply by running the script again (without the `--reset` flag):
 ```bash
 python train.py
 ```
+
+### Details
+
+This template is designed for JAX as the backend. In particular, it uses:
+- `equinox` for custom PyTree creation and model building
+- `optax` for optimization
+- `PyTorch` for data loading
+- `orbax` for checkpointing
