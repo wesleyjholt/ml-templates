@@ -4,9 +4,9 @@
 import equinox as eqx
 import orbax.checkpoint as ocp
 
-from state import TrainState
-from checkpointing import EquinoxSave
-from utils import compute_elapsed_time
+from .state import TrainState
+from .checkpointing import EquinoxSave
+from .utils import compute_elapsed_time
 
 def save_checkpoint(state: TrainState, hyperparams: dict, mngr: ocp.CheckpointManager):
     state = eqx.tree_at(lambda x: x.dataloader.state_dict, state, state.dataloader.iterable.state_dict())

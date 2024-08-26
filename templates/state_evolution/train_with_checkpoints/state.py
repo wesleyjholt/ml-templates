@@ -4,10 +4,10 @@ import jax.random as jr
 import equinox as eqx
 from time import time
 
-from model import RNN as Model
-from optimizer import AdamOptimizer as Optimizer
-from dataloader import TorchDataLoader as DataLoader
-from loss import BinaryCrossEntropyLoss as Loss
+from .model import RNN as Model
+from .optimizer import AdamOptimizer as Optimizer
+from .dataloader import TorchDataLoader as DataLoader
+from .loss import BinaryCrossEntropyLoss as Loss
 
 class TimeStamps(eqx.Module):
     first_start_time: float

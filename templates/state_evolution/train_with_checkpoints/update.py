@@ -4,7 +4,8 @@ import jax
 import jax.numpy as jnp
 import equinox as eqx
 from typing import NamedTuple, Optional, Any
-from state import TrainState
+
+from .state import TrainState
 
 class IterData(NamedTuple):
     epoch: Optional[Any] = None

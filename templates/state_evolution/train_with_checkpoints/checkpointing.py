@@ -4,7 +4,7 @@ import equinox as eqx
 import orbax.checkpoint as ocp
 from typing import Any
 
-from utils import read_json, write_json
+from .utils import read_json, write_json
 
 class EquinoxCheckpointHandler(ocp.CheckpointHandler):
     def save(self, directory: str, args: 'EquinoxSave'):

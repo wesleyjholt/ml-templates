@@ -7,10 +7,10 @@ import orbax.checkpoint as ocp
 import equinox as eqx
 from time import time
 
-from state import TrainState
-from update import IterData, train_step, increment_epoch, reset_accumulated_loss, reset_batch_counter
-from callback import save_checkpoint, print_loss, write_loss
-from checkpointing import EquinoxSave, EquinoxRestore
+from .state import TrainState
+from .update import IterData, train_step, increment_epoch, reset_accumulated_loss, reset_batch_counter
+from .callback import save_checkpoint, print_loss, write_loss
+from .checkpointing import EquinoxSave, EquinoxRestore
 
 # REPLACE WITH YOUR OWN DIRECTORY SETUP FUNCTION!
 def setup_io(hyperparams: dict):
