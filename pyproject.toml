@@ -1,0 +1,78 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ml-templates"
+dynamic = ["version"]
+description = ''
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "Wesley Holt", email = "wesleyjholt@gmail.com" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = [
+  "equinox",
+  "orbax-checkpoint",
+  "optax",
+  "torch",
+  "torchvision",
+  "torchdata"
+]
+
+[project.optional-dependencies]
+examples = [
+  "seaborn",
+  "ipykernel",
+  "jupyter",
+]
+test = [
+  "pytest"
+]
+
+[project.urls]
+Documentation = "https://github.com/Wesley Holt/ml-templates#readme"
+Issues = "https://github.com/Wesley Holt/ml-templates/issues"
+Source = "https://github.com/Wesley Holt/ml-templates"
+
+[tool.hatch.version]
+path = "src/ml_templates/__about__.py"
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/ml_templates tests}"
+
+[tool.coverage.run]
+source_pkgs = ["ml_templates", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/ml_templates/__about__.py",
+]
+
+[tool.coverage.paths]
+ml_templates = ["src/ml_templates", "*/ml-templates/src/ml_templates"]
+tests = ["tests", "*/ml-templates/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]

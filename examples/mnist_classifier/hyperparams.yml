@@ -1,0 +1,20 @@
+# REPLACE WITH YOUR OWN HYPERPARAMETERS!
+state:
+  model_name: cnn
+  model_hyperparams: 
+    seed: 0
+  dataloader_name: mnist
+  dataloader_hyperparams:
+    raw_data_dir: MNIST
+    batch_size: 32
+  loss_name: cross_entropy
+  loss_hyperparams: {}
+  optimizer_name: adam
+  optimizer_hyperparams:
+    learning_rate: 1.0e-3
+train:
+  num_epochs: 3
+  loss_history_path: loss_history.txt
+  checkpoint_directory: checkpoints
+  final_model_path: trained_model.eqx
+  save_every: 20
